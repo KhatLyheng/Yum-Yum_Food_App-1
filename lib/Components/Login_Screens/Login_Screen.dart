@@ -1,3 +1,4 @@
+import 'package:assignment_yum_yum_app/Components/HomeScreen.dart';
 import 'package:assignment_yum_yum_app/const_Colors/const.dart';
 import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
@@ -42,17 +43,17 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     // TODO: implement dispose
     super.dispose();
   }
+  bool isEmail = false;
 
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
   var selectlst = 0;
+  bool onCheckbox = true;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    bool isEmail = true;
-
-    final _formKey = GlobalKey<FormState>();
-    final emailController = TextEditingController();
-    final phoneController = TextEditingController();
-    final passwordController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -121,7 +122,6 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
 
                                   const SizedBox(height: 25),
 
-                                  /// Email or Phone Input
                                   Text(isEmail ? 'Email' : 'Phone'),
                                   const SizedBox(height: 8),
 
@@ -151,17 +151,14 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                     },
                                   ),
 
-                                  const SizedBox(height: 20),
-
-                                  /// Password
-                                  const Text('Password'),
-                                  const SizedBox(height: 8),
-
+                                   SizedBox(height: 20),
+                                   Text('Password'),
+                                   SizedBox(height: 8),
                                   TextFormField(
                                     controller: passwordController,
-                                    obscureText: true,
+                                    obscureText: onCheckbox,
                                     decoration: InputDecoration(
-                                      hintText: 'yourpassword',
+                                      hintText: 'password',
                                       filled: true,
                                       fillColor: Colors.grey.shade100,
                                       border: OutlineInputBorder(
@@ -174,14 +171,16 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                   ),
 
                                   const SizedBox(height: 15),
-
-                                  /// Remember + Forgot
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        children: const [
-                                          Checkbox(value: false, onChanged: null),
+                                        children: [
+                                          Checkbox(value: onCheckbox, onChanged: (bool? value){
+                                            setState(() {
+                                              onCheckbox = value!;
+                                            });
+                                          }),
                                           Text(
                                             'Remember me',
                                             style: TextStyle(color: Colors.blue),
@@ -210,10 +209,10 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                       ),
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
-                                          // Handle login
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Homescreen()));
                                         }
                                       },
-                                      child: const Text(
+                                      child:  Text(
                                         'Continue',
                                         style: TextStyle(fontSize: 16),
                                       ),
