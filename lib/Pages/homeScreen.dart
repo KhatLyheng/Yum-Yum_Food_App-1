@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:assignment_yum_yum_app/const_Colors/const.dart';
 import 'package:flutter/material.dart';
 
+import '../Components/filter.dart';
 import 'detailHomeScreen.dart';
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -81,18 +82,41 @@ class _StickySearchDelegate extends SliverPersistentHeaderDelegate {
       bool overlapsContent,
       ) {
     return Container(
-      color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       alignment: Alignment.center,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 8,
+              spreadRadius: 2,
+              offset: Offset(0, 4),
+            ),
+          ]
+      ),
       child: TextField(
         decoration: InputDecoration(
           hintText: "Search...",
           prefixIcon: const Icon(Icons.search),
-          suffixIcon: IconButton(onPressed: (){}, icon: Container(child: Icon(Icons.filter_list,color: Colors.white,),color: kbackgroundColor,height: 50,)),
+          suffixIcon: IconButton(padding: EdgeInsets.zero,onPressed: (){
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (context) => const FilterPage(),
+            );
+          },
+              icon: Container(decoration: BoxDecoration(
+              color: kbackgroundColor,
+              borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20))),
+                child: Icon(Icons.filter_list,color: Colors.white,),
+                height: 50,
+                width: 50,)),
           filled: true,
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide.none,
           ),
         ),

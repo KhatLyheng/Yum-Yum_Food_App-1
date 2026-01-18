@@ -1,3 +1,6 @@
+import 'package:assignment_yum_yum_app/Pages/accountScreen.dart';
+import 'package:assignment_yum_yum_app/Pages/cartScreen.dart';
+import 'package:assignment_yum_yum_app/Pages/favoriteScreen.dart';
 import 'package:assignment_yum_yum_app/Pages/homeScreen.dart';
 import 'package:assignment_yum_yum_app/const_Colors/const.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,9 @@ int _currentIndex = 0;
 
 final List<Widget> _screens = [
   Homescreen(),
+  CartScreen(),
+  FavoriteScreen(),
+  AccountScreen()
 
 ];
 class _MainScreenAppState extends State<MainScreenApp> {

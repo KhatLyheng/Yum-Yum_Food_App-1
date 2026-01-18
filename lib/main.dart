@@ -1,6 +1,8 @@
 import 'package:assignment_yum_yum_app/Components/mainScreen.dart';
 import 'package:assignment_yum_yum_app/Pages/splashScreen.dart';
 import 'package:flutter/material.dart';
+
+import 'Components/filter.dart';
 void main(){
   runApp(const MainScreen());
 }
@@ -16,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreenApp(),
+      home: SplashScreen(),
     );
   }
 }
