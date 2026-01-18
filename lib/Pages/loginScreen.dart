@@ -1,5 +1,6 @@
-import 'package:assignment_yum_yum_app/Components/HomeScreen.dart';
+import 'package:assignment_yum_yum_app/Components/mainScreen.dart';
 import 'package:assignment_yum_yum_app/const_Colors/const.dart';
+import 'package:assignment_yum_yum_app/main.dart';
 import 'package:flutter/material.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key,required this.LogoApp});
@@ -100,9 +101,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                     ),
                                   ),
 
-                                  const SizedBox(height: 20),
-
-                                  /// Email / Phone Toggle
+                                  SizedBox(height: 20),
                                   Container(
                                     decoration: BoxDecoration(
                                       color: Colors.grey.shade100,
@@ -209,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                       ),
                                       onPressed: () {
                                         if (_formKey.currentState!.validate()) {
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Homescreen()));
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MainScreenApp()));
                                         }
                                       },
                                       child:  Text(
@@ -220,10 +219,8 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                   ),
 
                                   const SizedBox(height: 25),
-
-                                  /// OR Divider
                                   Row(
-                                    children: const [
+                                    children: [
                                       Expanded(child: Divider()),
                                       Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -233,9 +230,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                     ],
                                   ),
 
-                                  const SizedBox(height: 20),
-
-                                  /// Social Icons (placeholder)
+                                  SizedBox(height: 20),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: const [

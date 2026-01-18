@@ -1,4 +1,4 @@
-import 'package:assignment_yum_yum_app/Components/Login_Screens/Login_Screen.dart';
+import 'package:assignment_yum_yum_app/Pages/loginScreen.dart';
 import 'package:assignment_yum_yum_app/const_Colors/const.dart';
 import 'package:flutter/material.dart';
 class SplashScreen extends StatefulWidget {
